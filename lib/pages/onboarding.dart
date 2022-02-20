@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/empty.dart';
-import 'package:todo_app/utils/custom_colors.dart';
+
+import '../utils/util.dart';
 
 class Onboarding extends StatefulWidget {
   Onboarding({Key? key}) : super(key: key);
@@ -28,10 +29,12 @@ class _OnboardingState extends State<Onboarding> {
           child: Column(
             children: <Widget>[
               Expanded(
-                  flex: 8,
-                  child: Hero(
-                      child: Image.asset('assets/images/Clipboard.png'),
-                      tag: 'Clipboard')),
+                flex: 8,
+                child: Hero(
+                  tag: 'Clipboard',
+                  child: Image.asset('assets/images/Clipboard.png'),
+                ),
+              ),
               Expanded(
                 flex: 3,
                 child: Column(

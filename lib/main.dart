@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:todo_app/pages/onboarding.dart';
 
-void main() => runApp(TodoApp());
+import 'utils/util.dart';
 
-class TodoApp extends StatefulWidget {
-  TodoApp({Key? key}) : super(key: key);
+void main() => runApp(App());
 
-  _TodoAppState createState() => _TodoAppState();
+class App extends StatefulWidget {
+  App({Key? key}) : super(key: key);
+
+  _AppState createState() => _AppState();
 }
 
-class _TodoAppState extends State<TodoApp> {
+class _AppState extends State<App> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
@@ -18,16 +20,16 @@ class _TodoAppState extends State<TodoApp> {
         statusBarColor: Colors.transparent, //top bar color
       ),
     );
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        canvasColor: Colors.grey,
+        canvasColor: CustomColors.GreyBackground,
         fontFamily: 'rubik',
       ),
       home: Onboarding(),
