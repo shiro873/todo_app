@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 // import 'package:gradient_app_bar/gradient_app_bar.dart';
 import '../utils/util.dart';
 
+final String user = "Neo";
+
 PreferredSizeWidget fullAppbar(BuildContext context) {
   return PreferredSize(
     preferredSize: Size.fromHeight(210.0),
@@ -10,12 +12,12 @@ PreferredSizeWidget fullAppbar(BuildContext context) {
       flexibleSpace: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          CustomPaint(
-            painter: CircleOne(),
-          ),
-          CustomPaint(
-            painter: CircleTwo(),
-          ),
+          // CustomPaint(
+          //   painter: CircleOne(),
+          // ),
+          // CustomPaint(
+          //   painter: CircleTwo(),
+          // ),
         ],
       ),
       title: Container(
@@ -25,7 +27,7 @@ PreferredSizeWidget fullAppbar(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Hello Brenda!',
+              'Hello $user!',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
             Text(
@@ -42,6 +44,7 @@ PreferredSizeWidget fullAppbar(BuildContext context) {
         ),
       ],
       elevation: 0,
+      backgroundColor: CustomColors.GlassBackground,
       // gradient: LinearGradient(
       //   begin: Alignment.topLeft,
       //   end: Alignment.bottomRight,
@@ -119,17 +122,17 @@ PreferredSizeWidget emptyAppbar() {
   return PreferredSize(
     preferredSize: Size.fromHeight(75.0),
     child: AppBar(
-      flexibleSpace: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          CustomPaint(
-            painter: CircleOne(),
-          ),
-          CustomPaint(
-            painter: CircleTwo(),
-          ),
-        ],
-      ),
+      // flexibleSpace: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: <Widget>[
+      //     // CustomPaint(
+      //     //   painter: CircleOne(),
+      //     // ),
+      //     // CustomPaint(
+      //     //   painter: CircleTwo(),
+      //     // ),
+      //   ],
+      // ),
       title: Container(
         margin: EdgeInsets.only(top: 20),
         child: Column(
@@ -137,7 +140,7 @@ PreferredSizeWidget emptyAppbar() {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'Hello Brenda!',
+              'Hello $user!',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             ),
             Text(
@@ -153,12 +156,8 @@ PreferredSizeWidget emptyAppbar() {
           child: Image.asset('assets/images/photo.png'),
         ),
       ],
-      elevation: 0,
-      // gradient: LinearGradient(
-      //   begin: Alignment.topLeft,
-      //   end: Alignment.bottomRight,
-      //   colors: [CustomColors.HeaderBlueDark, CustomColors.HeaderBlueLight],
-      // ),
+      elevation: 5,
+      backgroundColor: CustomColors.GlassBackground,
     ),
   );
 }
