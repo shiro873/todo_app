@@ -11,7 +11,8 @@ class CustomColors {
   static const Color GreenShadow = Color.fromRGBO(30, 209, 2, 0.24); // 24%
   static const Color GreenBackground =
       Color.fromRGBO(181, 255, 155, 0.36); // 36%
-  static const Color GlassBackground = Color.fromRGBO(234, 240, 240, 1.00);
+  static const Color GlassBackground = Color.fromRGBO(234, 240, 240, 0.40);
+  static const Color DarkGlassBackground = Color.fromRGBO(147, 178, 178, 0.30);
 
   static const Color OrangeIcon = Color.fromRGBO(236, 108, 11, 1);
   static const Color OrangeBackground =

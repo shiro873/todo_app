@@ -1,25 +1,18 @@
 import 'package:flutter/material.dart';
-
-// import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:todo_app/utils/text_style.dart';
 import '../utils/util.dart';
 
 final String user = "Neo";
+final String reminder = 'Today Reminder';
+final String reminderTitle = 'Meeting with client';
+final String reminderTime = '13.00 PM';
+final int taskCount = 5;
 
 PreferredSizeWidget fullAppbar(BuildContext context) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(210.0),
+    preferredSize:
+        taskCount > 0 ? Size.fromHeight(210.0) : Size.fromHeight(75.0),
     child: AppBar(
-      flexibleSpace: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          // CustomPaint(
-          //   painter: CircleOne(),
-          // ),
-          // CustomPaint(
-          //   painter: CircleTwo(),
-          // ),
-        ],
-      ),
       title: Container(
         margin: EdgeInsets.only(top: 20),
         child: Column(
@@ -28,124 +21,11 @@ PreferredSizeWidget fullAppbar(BuildContext context) {
           children: <Widget>[
             Text(
               'Hello $user!',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              style: appBarTitleStyle(),
             ),
             Text(
-              'Today you have 9 tasks',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
-            ),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        Container(
-          margin: EdgeInsets.fromLTRB(0, 20, 20, 0),
-          child: Image.asset('assets/images/photo.png'),
-        ),
-      ],
-      elevation: 0,
-      backgroundColor: CustomColors.GlassBackground,
-      // gradient: LinearGradient(
-      //   begin: Alignment.topLeft,
-      //   end: Alignment.bottomRight,
-      //   colors: [CustomColors.HeaderBlueDark, CustomColors.HeaderBlueLight],
-      // ),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(10),
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-          padding: EdgeInsets.fromLTRB(15, 5, 15, 0),
-          decoration: BoxDecoration(
-            color: CustomColors.HeaderGreyLight,
-            borderRadius: BorderRadius.circular(5.0),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Today Reminder',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    'Meeting with client',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w300),
-                  ),
-                  SizedBox(
-                    height: 3,
-                  ),
-                  Text(
-                    '13.00 PM',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ],
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width / 2.9,
-              ),
-              Image.asset(
-                'assets/images/bell-left.png',
-                scale: 1.3,
-              ),
-              Container(
-                margin: EdgeInsets.only(bottom: 80),
-                child: Icon(
-                  Icons.clear,
-                  color: Colors.white,
-                  size: 18.0,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-PreferredSizeWidget emptyAppbar() {
-  return PreferredSize(
-    preferredSize: Size.fromHeight(75.0),
-    child: AppBar(
-      // flexibleSpace: Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //   children: <Widget>[
-      //     // CustomPaint(
-      //     //   painter: CircleOne(),
-      //     // ),
-      //     // CustomPaint(
-      //     //   painter: CircleTwo(),
-      //     // ),
-      //   ],
-      // ),
-      title: Container(
-        margin: EdgeInsets.only(top: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              'Hello $user!',
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              'Today you have no tasks',
-              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w300),
+              'Today you have $taskCount tasks',
+              style: appBarDetailStyle(),
             ),
           ],
         ),
@@ -158,48 +38,61 @@ PreferredSizeWidget emptyAppbar() {
       ],
       elevation: 5,
       backgroundColor: CustomColors.GlassBackground,
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(5),
+        child: Container(
+          child: taskCount == 0
+              ? Container()
+              : Container(
+                  margin: EdgeInsets.fromLTRB(15, 5, 15, 15),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 0),
+                  decoration: BoxDecoration(
+                    color: CustomColors.DarkGlassBackground,
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            reminder,
+                            style: appBarTitleStyle(),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            reminderTitle,
+                            style: appBarDetailStyle(),
+                          ),
+                          SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                            reminderTime,
+                            style: appBarDetailStyle(),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.9,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(bottom: 80),
+                        child: Icon(
+                          Icons.clear,
+                          color: Colors.white,
+                          size: 18.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+        ),
+      ),
     ),
   );
-}
-
-class CircleOne extends CustomPainter {
-  Paint? _paint;
-
-  CircleOne() {
-    _paint = Paint()
-      ..color = CustomColors.HeaderCircle
-      ..strokeWidth = 10.0
-      ..style = PaintingStyle.fill;
-  }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(Offset(28.0, 0.0), 99.0, _paint!);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
-class CircleTwo extends CustomPainter {
-  Paint? _paint;
-
-  CircleTwo() {
-    _paint = Paint()
-      ..color = CustomColors.HeaderCircle
-      ..strokeWidth = 10.0
-      ..style = PaintingStyle.fill;
-  }
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(Offset(-30, 20), 50.0, _paint!);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
 }

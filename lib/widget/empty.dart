@@ -11,12 +11,9 @@ class Empty extends StatefulWidget {
 }
 
 class _EmptyState extends State<Empty> {
-  var bottomNavigationBarIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: emptyAppbar(),
       body: Center(
         child: Container(
           width: MediaQuery.of(context).size.width / 1.2,
@@ -61,10 +58,6 @@ class _EmptyState extends State<Empty> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: customFab(context),
-      bottomNavigationBar:
-          BottomNavigationBarApp(context, bottomNavigationBarIndex),
     );
   }
 }
